@@ -4,12 +4,13 @@ import createMollieClient from '@mollie/api-client';
 const MollieConnectionTest = () => {
   const [methods, setMethods] = useState([]);
   const [error, setError] = useState(null);
+  const mollieApiKey = process.env.REACT_APP_MOLLIE_API_KEY;
 
   useEffect(() => {
     const testMollieConnection = async () => {
       try {
         const mollieClient = createMollieClient({
-          apiKey: 'test_dHar4XY7LxsDOtmnkVtjNVWXLSlXsM'
+          apiKey: mollieApiKey
         });
 
         const response = await mollieClient.methods.all();
